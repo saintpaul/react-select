@@ -1,0 +1,8 @@
+// Import react-select scss files
+@import "../../node_modules/react-select/scss/default";
+
+$react-select-wrapper-margin: 0 !default;
+
+.react-select-wrapper {
+  margin: $react-select-wrapper-margin;
+}

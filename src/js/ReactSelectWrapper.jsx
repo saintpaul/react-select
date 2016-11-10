@@ -2,6 +2,7 @@ const React = require("react");
 const Select = require("react-select");
 const _ = require("lodash");
 const { ValidationTypes } = require("react-validation");
+const Config = require("./Configuration");
 
 /**
  * Wrapper for react-select component.
@@ -29,6 +30,7 @@ class ReactSelectWrapper extends React.Component {
 
     _cleanProps = () => {
         var newProps = _.clone(this.props);
+        newProps.noResultsText = Config.NO_RESULT_TEXT;
         delete newProps.async;
         delete newProps.debounceTime;
         delete newProps.limit;
@@ -130,5 +132,7 @@ ReactSelectWrapper.defaultProps = {
     options: [],
     validationType: ValidationTypes.REACT_SELECT // Props required by Validation system
 };
+
+ReactSelectWrapper.Config = Config;
 
 module.exports = ReactSelectWrapper;

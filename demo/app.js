@@ -1,6 +1,8 @@
 const React = require('react');
 const ReactDom = require('react-dom');
 const ReactSelect = require('../src/js/ReactSelectWrapper');
+// Override default configuration
+ReactSelect.Config.NO_RESULT_TEXT = "No results found, try something else bro";
 
 const STREETS = [
     "Rue du fort",

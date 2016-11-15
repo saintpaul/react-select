@@ -26,14 +26,17 @@ class ReactSelectWrapper extends React.Component {
         super(props);
 
         this.debounce = _.debounce(this._callLoadOption, this.props.debounceTime);
+        this.selectRef = null; // Ref to Select component
     }
 
     _cleanProps = () => {
         var newProps = _.clone(this.props);
         newProps.noResultsText = newProps.noResultsText || Config.NO_RESULT_TEXT;
+        // newProps.noResultsText = newProps.noResultsText || Config.NO_RESULT_TEXT;
         delete newProps.async;
         delete newProps.debounceTime;
         delete newProps.limit;
+        delete newProps.autoSelectOnBlur;
 
         return newProps;
     };
@@ -48,6 +51,14 @@ class ReactSelectWrapper extends React.Component {
     getValue = (value) => this.props.valueKey ? value[this.props.valueKey] : value;
 
     onChange = (selectedItems) => (this.props.multi ? this._onChangeMulti(selectedItems) : this._onChangeSingle(selectedItems));
+    onBlur = (e) => {
+        var select = this.selectRef;
+        // Auto focus first available option on blur
+        if(select && select.filterOptions().length === 1)
+            select.selectFocusedOption();
+        if(this.props.onBlur)
+            this.props.onBlur(e);
+    };
 
     _onChangeSingle = (selectedItem) => {
         // Tests on array prevent a bug: when pushing backspace key to delete the selected value, it returns a empty array instead of null
@@ -99,13 +110,14 @@ class ReactSelectWrapper extends React.Component {
 
     render = () => {
         let select;
+        let onBlur = this.props.autoSelectOnBlur ? { onBlur: this.onBlur } : null;
         let props = this._cleanProps();
         props.filterOptions = this.limitResults();
 
         if (this.props.async)
             select = <Select.Async {...props} onChange={this.onChange} loadOptions={this.loadOptions} filterOptions={false}/>; // TODO RCH: test if 'limit' prop is working with async
         else
-            select = <Select {...props} onChange={this.onChange} options={this.getOptions()}/>;
+            select = <Select ref={ (ref) => this.selectRef = ref } {...props} onChange={this.onChange} {...onBlur} options={this.getOptions()}/>;
 
         return (
             <div className="react-select-wrapper">
@@ -125,12 +137,14 @@ ReactSelectWrapper.propTypes = {
     debounceTime: React.PropTypes.number,
     options: React.PropTypes.array,
     loadOptions: React.PropTypes.func,
-    limit: React.PropTypes.number               // Limit number of displayed results. (this feature works for simple select only in sync mode only)
+    limit: React.PropTypes.number,               // Limit number of displayed results. (this feature works for simple select in sync mode only)
+    autoSelectOnBlur: React.PropTypes.bool       // If true, auto select the first option onBlur (if there is one result only)
 };
 
 ReactSelectWrapper.defaultProps = {
     options: [],
-    validationType: ValidationTypes.REACT_SELECT // Props required by Validation system
+    validationType: ValidationTypes.REACT_SELECT, // Props required by Validation system
+    autoSelectOnBlur: true
 };
 
 ReactSelectWrapper.Config = Config;

@@ -1,6 +1,6 @@
 {
   "name": "react-select-wrapper",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "ReactJs Select wrapper for react-select",
   "main": "./lib/js/index.js",
   "scripts": {

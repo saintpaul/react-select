@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.0
+**features**
+- Add "autoSelectOnBlur" prop
+
 ## 1.1.1
 **bug fixes**
 - Fix issue ("noResultsText" can now be passed either by config or by props)

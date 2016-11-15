@@ -32,7 +32,7 @@ class ReactSelectWrapper extends React.Component {
     _cleanProps = () => {
         var newProps = _.clone(this.props);
         newProps.noResultsText = newProps.noResultsText || Config.NO_RESULT_TEXT;
-        // newProps.noResultsText = newProps.noResultsText || Config.NO_RESULT_TEXT;
+        newProps.searchingText = newProps.searchingText || Config.SEARCHING_TEXT;
         delete newProps.async;
         delete newProps.debounceTime;
         delete newProps.limit;

@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.2
+**features**
+- Add release script
+
 ## 1.2.0
 **features**
 - Add "autoSelectOnBlur" prop

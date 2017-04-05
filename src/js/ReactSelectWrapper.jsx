@@ -1,7 +1,7 @@
 const React = require("react");
 const Select = require("react-select");
 const _ = require("lodash");
-const { ValidationTypes } = require("react-validation");
+
 const Config = require("./Configuration");
 
 /**
@@ -143,7 +143,6 @@ ReactSelectWrapper.propTypes = {
 
 ReactSelectWrapper.defaultProps = {
     options: [],
-    validationType: ValidationTypes.REACT_SELECT, // Props required by Validation system
     autoSelectOnBlur: true
 };
 

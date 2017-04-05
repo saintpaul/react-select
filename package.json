@@ -7,7 +7,8 @@
     "prebuild": "npm i",
     "build": "./build.sh",
     "prerelease": "./build.sh",
-    "release": "./release.sh"
+    "release": "./release.sh",
+    "start" : "gulp"
   },
   "repository": {
     "type": "git",
@@ -20,11 +21,12 @@
   },
   "homepage": "https://github.com/saintpaul/react-select-wrapper#readme",
   "dependencies": {
-    "lodash": "^4.5.1",
-    "react": "0.14.8",
-    "react-dom": "0.14.8",
-    "react-select": "1.0.0-beta8",
-    "react-validation": "https://github.com/saintpaul/react-validation#v1.1.2"
+    "react-select": "1.0.0-beta8"
+  },
+  "peerDependencies": {
+    "react": "0.14.x || 15.x",
+    "react-dom": "0.14.x || 15.x",
+    "lodash": "4.x"
   },
   "devDependencies": {
     "babel": "^6.3.13",
@@ -54,6 +56,8 @@
     "gulp-uglify": "~1.1.0",
     "gulp-util": "~3.0.0",
     "moment": "2.9.0",
+    "react": "15.4.2",
+    "react-dom": "15.4.2",
     "run-sequence": "~0.3.5",
     "vinyl-source-stream": "~0.1.1",
     "watchify": "~2.3.0"

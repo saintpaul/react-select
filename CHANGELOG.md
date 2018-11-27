@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.5.0
+**security improvements**
+- Remove unused 'moment' depencency 
+
 ## 1.4.0
 **security improvements**
 - Fix version of 'event-stream' to 3.3.4

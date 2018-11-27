@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.4.0
+**security improvements**
+- Fix version of 'event-stream' to 3.3.4
+
 ## 1.3.0
 **features**
 - Remove react-validation dependency

@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.6.0
+**technical improvements**
+- Support Node 10
+- Upgrade Gulp to v4 
+
 ## 1.5.0
 **security improvements**
 - Remove unused 'moment' depencency 

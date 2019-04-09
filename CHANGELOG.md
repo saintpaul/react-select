@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.6.1
+- Update release script : no need to pass a "v" before version number when releasing
+
 ## 1.6.0
 **technical improvements**
 - Support Node 10
